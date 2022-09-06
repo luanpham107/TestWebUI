@@ -1618,8 +1618,8 @@
     <div id="homeScreen" style="display: none;">
         <header class="w3-top w3-bar w3-theme w3-center">
             <div class="w3-cell-row wa">
-                <h2 class="w3-bar-item">Ensven Control Panel</h4>
-                    <!-- <h4 class="w3-display-right top-btn">Device</h4> -->
+                <h2 class="w3-bar-item">Ensven Control Panel</h2>
+                <!-- <h4 class="w3-display-right top-btn">Device</h4> -->
             </div>
         </header>
         <div class="w3-container w3-display-middle">
@@ -1654,7 +1654,6 @@
                 <div>60%</div>
             </div>
             <div class="w3-cell-row">
-                <input type="file" id="my_file" style="display: none;" onchange="onFileSelected(event)">
                 <input type="range" min="1" max="100" value="50" class="slider w90" id="myRange">
             </div>
 
@@ -1665,7 +1664,6 @@
                 <div>70%</div>
             </div>
             <div class="w3-cell-row">
-                <input type="file" id="my_file" style="display: none;" onchange="onFileSelected(event)">
                 <input type="range" min="1" max="100" value="50" class="slider w90" id="myRange">
             </div>
 
@@ -1676,7 +1674,6 @@
                 <div>50%</div>
             </div>
             <div class="w3-cell-row">
-                <input type="file" id="my_file" style="display: none;" onchange="onFileSelected(event)">
                 <input type="range" min="1" max="100" value="50" class="slider w90" id="myRange">
             </div>
         </div>
@@ -1744,12 +1741,12 @@
             <div class="w3-container mt-150">
                 <div class="w3-container w3-display-middle">
                     <div class="w3-cell-row wa ma mt-50">
-                        <input type="file" id="my_file" style="display: none;" onchange="onFileSelected(event)">
-                        <button id="get_file" class=" h100 w3-bar-item w3-button w3-large w3-hover-theme" onclick="openSidebar()">Update Firmware</button>
+                        <input type="file" id="my_file" style="display: none;" onchange="onFileSelected(event)" accept=".bin">
+                        <button id="get_file" class="h100 w3-bar-item w3-button w3-large w3-hover-theme">Update Firmware</button>
                     </div>
                     <div class="w3-cell-row wa ma mt-50">
-                        <input type="file" id="my_spiffs_file" style="display: none;" onchange="onFileSPIFFSSelected(event)">
-                        <button id="get_spiffs_file" class=" h100 w3-bar-item w3-button w3-large w3-hover-theme" onclick="openSidebar()">Update UI</button>
+                        <input type="file" id="my_spiffs_file" style="display: none;" onchange="onFileSPIFFSSelected(event)" accept=".bin,.html,.css,.js">
+                        <button id="get_spiffs_file" class="h100 w3-bar-item w3-button w3-large w3-hover-theme">Update UI</button>
                     </div>
                 </div>
             </div>
@@ -2108,7 +2105,6 @@
                     xhr.send(formData);
                 }
 
-                //onFileSPIFFSSelected
                 function onFileSPIFFSSelected(event) {
                     var selectedFile = event.target.files[0];
                     let formData = new FormData();
@@ -2474,20 +2470,21 @@
                     }
                     return 'microStep_' + pow;
                 }
+                
+                // closeSidebar();
+                function openSidebar() {
+                    // document.getElementById("mySidebar").style.display = "block";
+                }
 
                 setInterval(function() {
-                    console.log('setInterval m_screenName = ' + m_screenName);
+                    // console.log('setInterval m_screenName = ' + m_screenName);
                     if (m_screenName !== undefined && 'detailScreen' === m_screenName) {
                         getUpdateSync();
                     } else {
-                        console.log('dont request to esp32, save resource');
+                        // console.log('dont request to esp32, save resource');
                     }
                 }, 1000);
 
-                // closeSidebar();
-                function openSidebar() {
-                    document.getElementById("mySidebar").style.display = "block";
-                }
             </script>
 
 </body>
